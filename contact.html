@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Perplexity.social</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ===== Navigation Bar ===== -->
+  <nav>
+    <div class="logo">
+      <img src="assets/images/logowala.png" alt="Perplexity.social Logo" class="logo-img">
+    </div>
+    <div class="menu-toggle" id="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn">Get Started</a>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-contact">
+    <div>
+      <h1>Let's Talk About Your Business Goals</h1>
+      <p>We connect influencers and brands to help you grow. Share your vision and let's make it happen!</p>
+      <a href="contact.html" class="btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <main class="container">
+    <div class="contact-left">
+      <h1>Contact for Collaborations</h1>
+      <p>We’re excited to hear from influencers and brands! Fill out the form below or email us directly at <a href="mailto:hello@perplexity.social">hello@perplexity.social</a></p>
+
+      <!-- Formspree Form -->
+      <form id="contact-form" class="contact-form" action="https://formspree.io/f/movknraw" method="POST">
+        <input type="text" name="name" id="name" placeholder="Your Name" required>
+        <input type="email" name="_replyto" id="email" placeholder="Your Email" required>
+        <input type="text" name="subject" id="subject" placeholder="Subject" required>
+        <textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
+        <button type="submit" class="contact-btn">Send Message</button>
+      </form>
+    </div>
+
+    <div class="contact-right">
+      <img src="assets/images/contact2.jpg" alt="" class="contact-image">
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Perplexity.social. All Rights Reserved.</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com" target="_blank">Facebook</a>
+      <a href="https://www.instagram.com/fatmee_akhtar?igsh=NjlhZzJ2NGJ3bDJt" target="_blank">Instagram</a>
+      <a href="https://www.linkedin.com/in/shahnawaz-akhtar-fatmee-a36704211" target="_blank">LinkedIn</a>
+    </div>
+  </footer>
+
+  <!-- Script for Mobile Menu -->
+  <script>
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.querySelector('.nav-links');
+
+    mobileMenu.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
