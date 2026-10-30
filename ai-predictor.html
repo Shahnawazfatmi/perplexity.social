@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI YouTube Views Predictor | Perplexity.social</title>
+  <meta name="description" content="Predict YouTube video views before you publish. Perplexity.social's AI predictor uses an ensemble of Random Forest and XGBoost trained on historical data to help creators plan smarter content.">
+  <link rel="icon" href="assets/images/logowala.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ====== Header ====== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo" aria-label="Perplexity.social home">
+        <img src="assets/images/logowala.png" alt="Perplexity.social">
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav__links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="ai-predictor.html" class="active">AI Predictor</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav__cta-mobile"><a href="contact.html" class="btn btn--primary">Get Started</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <a href="contact.html" class="btn btn--primary">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ====== Page hero ====== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> <i class="fa-solid fa-chevron-right"></i> <span>AI Predictor</span></div>
+        <span class="eyebrow"><i class="fa-solid fa-microchip"></i> Machine learning</span>
+        <h1>Predict your YouTube views <span class="text-gradient">before you publish</span></h1>
+        <p>An ensemble machine learning model — Random Forest + XGBoost — trained on historical video data to help creators make smarter content decisions.</p>
+        <div class="page-hero__actions">
+          <a href="https://ai-powered-video-views-predictor.onrender.com/" target="_blank" rel="noopener" class="btn btn--primary btn--lg">Launch the Predictor <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          <a href="#how" class="btn btn--outline-light btn--lg">How it works</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Overview ====== -->
+    <section class="section">
+      <div class="container split">
+        <div class="split__copy reveal">
+          <span class="eyebrow">Why it matters</span>
+          <h2>Stop guessing. Start <span class="text-gradient">planning with data</span>.</h2>
+          <p>Every video takes hours to script, shoot and edit. Our predictor gives you an estimate of how it may perform — so you can compare ideas, tweak details and invest your time where it counts.</p>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-scale-balanced"></i></div>
+            <div><h4>Compare content ideas</h4><p>Test different categories, lengths and publish times side by side.</p></div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-handshake"></i></div>
+            <div><h4>Pitch brands with confidence</h4><p>Share expected reach when negotiating sponsored videos.</p></div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-gauge-high"></i></div>
+            <div><h4>Instant results</h4><p>Enter your video details and get a prediction in seconds.</p></div>
+          </div>
+        </div>
+        <div class="reveal reveal-delay-2" data-animate>
+          <div class="section--dark" style="background:transparent">
+            <div class="predictor-card" aria-hidden="true">
+              <div class="predictor-card__head">
+                <strong><i class="fa-brands fa-youtube" style="color:#ff4d4d"></i> &nbsp;Views Predictor</strong>
+                <span class="live-dot">Model ready</span>
+              </div>
+              <div class="predictor-field"><span>Video category</span><strong>Tech Review</strong></div>
+              <div class="predictor-field"><span>Duration</span><strong>9 min</strong></div>
+              <div class="predictor-field"><span>Publish time</span><strong>Sun, 11:00 AM</strong></div>
+              <div class="predictor-field"><span>Subscribers</span><strong>85K</strong></div>
+              <div class="meter">
+                <div class="meter__row"><span>Random Forest</span><span>Model 1</span></div>
+                <div class="meter__track"><div class="meter__fill" style="--w:72%"></div></div>
+                <div class="meter__row"><span>XGBoost</span><span>Model 2</span></div>
+                <div class="meter__track"><div class="meter__fill" style="--w:80%"></div></div>
+              </div>
+              <div class="predictor-result">
+                <div><small>Ensemble estimate (example)</small><strong>31.6K views</strong></div>
+                <i class="fa-solid fa-arrow-trend-up"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Pipeline ====== -->
+    <section class="section section--dark" id="how">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>From raw data to a prediction</h2>
+          <p>An ensemble approach combines two strong models for more stable, reliable estimates.</p>
+        </div>
+        <div class="pipeline reveal">
+          <div class="pipeline__node">
+            <i class="fa-solid fa-database"></i>
+            <h4>Data collection</h4>
+            <p>Historical YouTube video data and metadata</p>
+          </div>
+          <div class="pipeline__node">
+            <i class="fa-solid fa-filter"></i>
+            <h4>Feature engineering</h4>
+            <p>Cleaning, encoding and building predictive features</p>
+          </div>
+          <div class="pipeline__node">
+            <i class="fa-solid fa-tree"></i>
+            <h4>Random Forest</h4>
+            <p>Many decision trees averaged to reduce variance</p>
+          </div>
+          <div class="pipeline__node">
+            <i class="fa-solid fa-bolt"></i>
+            <h4>XGBoost</h4>
+            <p>Gradient-boosted trees that correct each other’s errors</p>
+          </div>
+          <div class="pipeline__node pipeline__node--accent">
+            <i class="fa-solid fa-chart-line"></i>
+            <h4>Ensemble prediction</h4>
+            <p>Combined output for a final views estimate</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Models + feature importance ====== -->
+    <section class="section">
+      <div class="container split">
+        <div class="split__copy reveal">
+          <span class="eyebrow">The models</span>
+          <h2>Two models, one smarter answer</h2>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-tree"></i></div>
+            <div><h4>Random Forest</h4><p>Builds many decision trees on random subsets of the data and averages them — robust against noise and overfitting.</p></div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-bolt"></i></div>
+            <div><h4>XGBoost</h4><p>Trains trees sequentially, each one fixing the mistakes of the last — known for high accuracy on tabular data.</p></div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div><h4>Ensemble learning</h4><p>Combining both balances their strengths, giving more consistent predictions than either model alone.</p></div>
+          </div>
+        </div>
+        <div class="card reveal reveal-delay-1" data-animate style="padding:2rem">
+          <h3 style="margin-bottom:.3rem">What influences views?</h3>
+          <p style="margin-bottom:1.75rem;font-size:.88rem">Illustrative example of the kinds of signals the model learns from.</p>
+          <div class="bar-chart">
+            <div class="bar-chart__row"><span>Channel subscribers</span><div class="bar-chart__track"><div class="bar-chart__fill" style="--w:90%"></div></div><span>High</span></div>
+            <div class="bar-chart__row"><span>Past video views</span><div class="bar-chart__track"><div class="bar-chart__fill" style="--w:80%"></div></div><span>High</span></div>
+            <div class="bar-chart__row"><span>Video category</span><div class="bar-chart__track"><div class="bar-chart__fill" style="--w:62%"></div></div><span>Med</span></div>
+            <div class="bar-chart__row"><span>Publish day &amp; time</span><div class="bar-chart__track"><div class="bar-chart__fill" style="--w:48%"></div></div><span>Med</span></div>
+            <div class="bar-chart__row"><span>Video duration</span><div class="bar-chart__track"><div class="bar-chart__fill" style="--w:38%"></div></div><span>Low</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Use cases ====== -->
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Who it’s for</span>
+          <h2>Built for creators and the brands that work with them</h2>
+        </div>
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="card__icon"><i class="fa-solid fa-video"></i></div>
+            <h3>YouTubers</h3>
+            <p>Plan your upload calendar around the ideas most likely to perform.</p>
+          </div>
+          <div class="card reveal reveal-delay-1">
+            <div class="card__icon"><i class="fa-solid fa-bullhorn"></i></div>
+            <h3>Brands &amp; agencies</h3>
+            <p>Estimate campaign reach before committing budget to a sponsored video.</p>
+          </div>
+          <div class="card reveal reveal-delay-2">
+            <div class="card__icon"><i class="fa-solid fa-people-group"></i></div>
+            <h3>Creator managers</h3>
+            <p>Benchmark multiple creators and make data-backed recommendations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions about the predictor</h2>
+        </div>
+        <div class="faq reveal">
+          <details open>
+            <summary>Is the AI predictor free to use?</summary>
+            <p>Yes — you can try the live predictor for free, no sign-up required.</p>
+          </details>
+          <details>
+            <summary>How accurate are the predictions?</summary>
+            <p>Predictions are estimates based on patterns in historical data. They’re best used to compare ideas and plan content, not as guaranteed numbers. We continuously work on improving model accuracy.</p>
+          </details>
+          <details>
+            <summary>Why does the app take a few seconds to load?</summary>
+            <p>The predictor is hosted on a cloud platform that may “sleep” when idle. The first load can take a little longer while the server wakes up.</p>
+          </details>
+          <details>
+            <summary>Can I get the predictor on my own website?</summary>
+            <p>Yes — AI content insights can be included with our Creator Pro and Brand plans. <a href="contact.html" style="color:var(--brand);font-weight:600">Contact us</a> to learn more.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CTA ====== -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Try the AI predictor now</h2>
+            <p>Enter your next video’s details and see its estimated views in seconds.</p>
+          </div>
+          <div class="cta-band__actions">
+            <a href="https://ai-powered-video-views-predictor.onrender.com/" target="_blank" rel="noopener" class="btn btn--light btn--lg">Launch Predictor <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ====== Footer ====== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/images/logowala.png" alt="Perplexity.social">
+          <p>Personalized websites, brand collab tools and AI insights that help influencers grow and get paid.</p>
+          <div class="socials">
+            <a href="https://www.instagram.com/fatmee_akhtar?igsh=NjlhZzJ2NGJ3bDJt" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/shahnawaz-akhtar-fatmee-a36704211" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://wa.me/918986923909" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:shahnawzak@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="work.html">Our Work</a></li>
+            <li><a href="ai-predictor.html">AI Predictor</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Portfolio Websites</a></li>
+            <li><a href="services.html">Social Stats Integration</a></li>
+            <li><a href="services.html">Brand Collab Tools</a></li>
+            <li><a href="services.html#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__contact">
+          <h4>Get in touch</h4>
+          <ul>
+            <li><i class="fa-solid fa-phone"></i><a href="tel:+918986923909">+91 89869 23909</a></li>
+            <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/918986923909" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+            <li><i class="fa-solid fa-envelope"></i><a href="mailto:shahnawzak@gmail.com">shahnawzak@gmail.com</a></li>
+            <li><i class="fa-solid fa-location-dot"></i><span>Lucknow, India</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-year>2025</span> Perplexity.social. All rights reserved.</p>
+        <p>Made with <i class="fa-solid fa-heart" style="color:#ff6b76"></i> for creators</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>

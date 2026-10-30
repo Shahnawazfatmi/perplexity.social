@@ -1,138 +1,234 @@
 // ==================== script.js ====================
-// Controls: Nav toggle, demo data load, counters, contact form
+// Controls: header, mobile nav, scroll reveal, counters, work filters,
+// contact form, back-to-top and the PerplexityBot chatbot.
 
 document.addEventListener("DOMContentLoaded", () => {
+  initHeader();
   initMobileMenu();
-  loadDemoData();
+  initReveal();
+  initCounters();
+  initWorkFilters();
   setupContactForm();
+  initBackToTop();
+  initChatbot();
+  setFooterYear();
 });
+
+// ==================== HEADER ====================
+function initHeader() {
+  const header = document.querySelector(".site-header");
+  if (!header) return;
+
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 10);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
 
 // ==================== NAVIGATION ====================
 function initMobileMenu() {
-  const mobileMenu = document.getElementById('mobile-menu');
-  const navLinks = document.querySelector('.nav-links');
+  const mobileMenu = document.getElementById("mobile-menu");
+  const navLinks = document.querySelector(".nav__links");
+  if (!mobileMenu || !navLinks) return;
 
-  if (mobileMenu && navLinks) {
-    mobileMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-      mobileMenu.classList.toggle('open');
+  const overlay = document.createElement("div");
+  overlay.className = "nav-overlay";
+  document.body.appendChild(overlay);
+
+  const setOpen = (open) => {
+    navLinks.classList.toggle("active", open);
+    mobileMenu.classList.toggle("open", open);
+    overlay.classList.toggle("show", open);
+    mobileMenu.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+
+  mobileMenu.addEventListener("click", () => setOpen(!navLinks.classList.contains("active")));
+  overlay.addEventListener("click", () => setOpen(false));
+  navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 960) setOpen(false);
+  });
+}
+
+// ==================== SCROLL REVEAL ====================
+function initReveal() {
+  const els = document.querySelectorAll(".reveal, [data-animate]");
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(el => el.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
     });
+  }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
 
-    const links = navLinks.querySelectorAll('a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        if (navLinks.classList.contains('active')) {
-          navLinks.classList.remove('active');
-          mobileMenu.classList.remove('open');
-        }
+  els.forEach(el => observer.observe(el));
+}
+
+// ==================== COUNTERS ====================
+// Usage: <span data-count="120" data-suffix="K+" data-decimals="0">0</span>
+function initCounters() {
+  const els = document.querySelectorAll("[data-count]");
+  if (!els.length) return;
+
+  const animate = (el) => {
+    const target = parseFloat(el.dataset.count) || 0;
+    const decimals = parseInt(el.dataset.decimals || "0", 10);
+    const prefix = el.dataset.prefix || "";
+    const suffix = el.dataset.suffix || "";
+    const duration = 1600;
+    const start = performance.now();
+
+    const tick = (now) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
+      if (progress < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+
+  if (!("IntersectionObserver" in window)) {
+    els.forEach(animate);
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animate(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  els.forEach(el => observer.observe(el));
+}
+
+// ==================== WORK FILTERS ====================
+function initWorkFilters() {
+  const buttons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".work-card[data-category]");
+  if (!buttons.length || !cards.length) return;
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const filter = btn.dataset.filter;
+      cards.forEach(card => {
+        const match = filter === "all" || card.dataset.category.split(" ").includes(filter);
+        card.classList.toggle("is-hidden", !match);
       });
     });
-  }
-}
-
-// ==================== DEMO DATA ====================
-function loadDemoData() {
-  const url = "assets/data/sample_data.json";
-  fetch(url)
-    .then(res => res.json())
-    .then(data => {
-      if (data.stats) renderStats(data.stats);
-      if (data.samples) renderPortfolioSamples(data.samples);
-    })
-    .catch(err => console.error("Could not load demo data:", err));
-}
-
-function renderStats(stats) {
-  const container = document.getElementById('stats');
-  if (!container) return;
-  container.innerHTML = '';
-  stats.forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'stat-card';
-    card.innerHTML = `
-      <h3>${s.platform}</h3>
-      <p class="stat-number" data-target="${s.count}">0</p>
-      <p class="muted">${s.note || ''}</p>
-    `;
-    container.appendChild(card);
-  });
-  animateCounters();
-}
-
-function animateCounters() {
-  const els = document.querySelectorAll('.stat-number');
-  els.forEach(el => {
-    const target = parseInt(el.dataset.target, 10) || 0;
-    const duration = 1200;
-    const stepTime = Math.max(20, Math.floor(duration / Math.max(1, target)));
-    let current = 0;
-    const step = () => {
-      current += Math.max(1, Math.floor(target / (duration / stepTime)));
-      if (current >= target) {
-        el.textContent = target.toLocaleString();
-      } else {
-        el.textContent = current.toLocaleString();
-        setTimeout(step, stepTime);
-      }
-    };
-    step();
-  });
-}
-
-function renderPortfolioSamples(samples) {
-  const container = document.getElementById('portfolio-items');
-  if (!container) return;
-  container.innerHTML = '';
-  samples.forEach(s => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.innerHTML = `
-      <img src="${s.image}" alt="${escapeHtml(s.title)}">
-      <h4>${escapeHtml(s.title)}</h4>
-      <p>${escapeHtml(s.description)}</p>
-      <p style="margin-top:8px"><a class="btn" href="${s.link}" target="_blank">View Content</a></p>
-    `;
-    container.appendChild(card);
   });
 }
 
 // ==================== CONTACT FORM ====================
 function setupContactForm() {
-  const form = document.getElementById('contact-form');
+  const form = document.getElementById("contact-form");
   if (!form) return;
 
-  form.addEventListener('submit', (e) => {
+  const status = document.getElementById("form-status");
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const btnHtml = submitBtn.innerHTML;
+
+  const showStatus = (type, message) => {
+    if (!status) return;
+    status.className = `form-status show form-status--${type}`;
+    status.innerHTML = `<i class="fa-solid ${type === "success" ? "fa-circle-check" : "fa-circle-exclamation"}"></i> ${message}`;
+  };
+
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
 
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const subject = document.getElementById('subject').value.trim();
-    const message = document.getElementById('message').value.trim();
-
-    const formspreeEndpoint = "https://formspree.io/f/movknraw";
-
-    fetch(formspreeEndpoint, {
+    fetch(form.action, {
       method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, email, subject, message })
+      headers: { Accept: "application/json" },
+      body: new FormData(form)
     })
-    .then(res => {
-      if (res.ok) {
-        alert("Message sent successfully!");
-        form.reset();
-      } else {
-        alert("Oops! Something went wrong.");
-      }
-    })
-    .catch(err => {
-      console.error("Form submission error:", err);
-      alert("Error sending message. Try again later.");
-    });
+      .then(res => {
+        if (res.ok) {
+          showStatus("success", "Thanks! Your message has been sent. We'll get back to you within 24 hours.");
+          form.reset();
+        } else {
+          showStatus("error", "Oops! Something went wrong. Please try again or reach us on WhatsApp.");
+        }
+      })
+      .catch(err => {
+        console.error("Form submission error:", err);
+        showStatus("error", "Network error. Please try again later or call us at +91 89869 23909.");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = btnHtml;
+      });
   });
 }
 
+// ==================== BACK TO TOP ====================
+function initBackToTop() {
+  const btn = document.createElement("button");
+  btn.className = "to-top";
+  btn.setAttribute("aria-label", "Back to top");
+  btn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+  document.body.appendChild(btn);
+
+  window.addEventListener("scroll", () => btn.classList.toggle("show", window.scrollY > 600), { passive: true });
+  btn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+}
+
+function setFooterYear() {
+  document.querySelectorAll("[data-year]").forEach(el => (el.textContent = new Date().getFullYear()));
+}
+
 // ==================== ADVANCED CHATBOT ====================
-document.addEventListener("DOMContentLoaded", () => {
+function initChatbot() {
+  // Widget markup is injected so every page gets the same bot
+  if (!document.getElementById("chatbot-container")) {
+    const wrap = document.createElement("div");
+    wrap.id = "chatbot-container";
+    wrap.innerHTML = `
+      <div id="chatbot-body" role="dialog" aria-label="PerplexityBot chat">
+        <div id="chatbot-header">
+          <div class="chatbot-id">
+            <div class="chatbot-id__avatar"><i class="fa-solid fa-robot"></i></div>
+            <div>
+              <strong>PerplexityBot</strong>
+              <span>● Online — replies instantly</span>
+            </div>
+          </div>
+          <button id="chatbot-close" aria-label="Close chat"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div id="chat-output" aria-live="polite"></div>
+        <div class="chat-quick">
+          <button type="button" data-q="What services do you offer?">Services</button>
+          <button type="button" data-q="What is the pricing?">Pricing</button>
+          <button type="button" data-q="Tell me about the AI predictor">AI Predictor</button>
+          <button type="button" data-q="How can I contact you?">Contact</button>
+        </div>
+        <div id="chat-input-area">
+          <input type="text" id="chat-input" placeholder="Type your message..." aria-label="Message" />
+          <button id="send-btn" aria-label="Send"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+      </div>
+      <button id="chatbot-icon" aria-label="Open chat">
+        <i class="fa-solid fa-comment-dots"></i>
+        <span>Chat with us</span>
+      </button>`;
+    document.body.appendChild(wrap);
+  }
+
   const chatbotIcon = document.getElementById("chatbot-icon");
   const chatbotBody = document.getElementById("chatbot-body");
   const chatbotClose = document.getElementById("chatbot-close");
@@ -140,7 +236,15 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatInput = document.getElementById("chat-input");
   const sendBtn = document.getElementById("send-btn");
 
-  chatbotIcon.addEventListener("click", () => chatbotBody.classList.toggle("show"));
+  let greeted = false;
+  chatbotIcon.addEventListener("click", () => {
+    chatbotBody.classList.toggle("show");
+    if (!greeted) {
+      addMessage("Hey there 👋 I'm PerplexityBot — your growth buddy for influencer success! Ask me about services, pricing, the AI predictor or how to get started.", "bot");
+      greeted = true;
+    }
+    if (chatbotBody.classList.contains("show")) chatInput.focus();
+  });
   chatbotClose.addEventListener("click", () => chatbotBody.classList.remove("show"));
 
   let context = "";
@@ -154,44 +258,53 @@ document.addEventListener("DOMContentLoaded", () => {
       "Hello there! Ready to level up your influencer game today?"
     ],
     join: [
-      "Joining is easy! Just sign up, customize your page, and you're good to go. 🚀",
-      "You can join by creating a free influencer page and showcasing your talent!",
-      "Set up your profile in minutes and start attracting brands instantly!"
+      "Joining is easy! Share your social profiles through our contact page and we’ll design your site. 🚀",
+      "Just fill the form on the Contact page — we’ll get back within 24 hours with a plan.",
+      "Share your profiles, we design, you start getting deals — that’s it!"
     ],
     brandDeals: [
-      "Once your profile’s live, brands can reach out directly for collaborations. 💼",
-      "We help you connect with verified brands that fit your style.",
-      "After joining, you’ll start getting brand visibility and collab requests!"
+      "Once your site is live, brands can reach out directly for collaborations. 💼",
+      "Your site includes a media kit and collab form so brands can contact you in one click.",
+      "We help you look professional to brands — stats, past collabs and rates in one place!"
     ],
     services: [
-      "We offer influencer websites, portfolios, branding, SEO, and analytics — everything you need to stand out!",
-      "Our platform helps you with personalized pages, brand collaborations, and performance tracking.",
-      "We make influencer marketing easy — from portfolio setup to sponsorships."
+      "We offer portfolio websites, social stats integration, brand collab tools, SEO and an AI views predictor!",
+      "Our platform helps you with personalized websites, brand collaborations and performance tracking.",
+      "Check the Services page — from portfolio setup to analytics and SEO, we’ve got you covered."
     ],
     pricing: [
-      "We’ve got flexible plans, from a free profile to advanced premium options. 💎",
-      "You can start free and upgrade later as you grow — simple and transparent.",
-      "Want specific pricing for website or brand packages?"
+      "Plans start with a Starter package and scale up to Creator Pro and custom Brand plans. 💎 See the Services page for details.",
+      "We keep pricing simple and transparent — check the pricing section on our Services page.",
+      "Want a custom quote? Drop your details on the Contact page and we’ll reply within 24 hours."
     ],
     contact: [
-      "You can reach us at 8986923909 📞 or by email anytime!",
-      "Need support? Call us or drop an email — we're quick to respond!",
-      "You can always message us here or contact 8986923909 for direct help."
+      "You can reach us at +91 89869 23909 📞 or on WhatsApp anytime!",
+      "Need support? Call, WhatsApp or email us — we're quick to respond!",
+      "Use the Contact page form or call +91 89869 23909 for direct help."
     ],
     portfolio: [
-      "You can showcase your best content — reels, posts, stories, and more — all in one clean page.",
+      "You can showcase your best content — reels, videos, posts and brand collabs — all in one clean page.",
       "Your portfolio is your personal brand space — show the best of your creativity!",
-      "You can upload visuals, videos, and brand collabs for brands to explore."
+      "Check our Work page to see a live influencer demo site."
     ],
     analytics: [
-      "Analytics show your performance — engagement, reach, clicks, and audience trends.",
-      "You can track how your content performs and which posts attract brands.",
-      "Our analytics dashboard gives you clear insights into your influence growth."
+      "Analytics show your performance — engagement, reach, clicks and audience trends.",
+      "Your site can display follower growth and engagement to build trust with brands.",
+      "We integrate your social stats so brands see real numbers instantly."
+    ],
+    ai: [
+      "Our AI Predictor uses an ensemble of Random Forest + XGBoost to estimate YouTube views before you publish. 🤖",
+      "The AI Predictor helps you plan content smarter — try it on the AI Predictor page!",
+      "It learns from historical video data to forecast views, so you can test titles and timing first."
     ],
     seo: [
-      "We optimize your page for search engines — so brands find you faster.",
+      "We optimize your site for search engines — so brands find you faster.",
       "SEO ensures your profile ranks better and attracts the right audience.",
       "We handle discoverability so you can focus on content."
+    ],
+    about: [
+      "Perplexity.social was founded by Shahnawaz Akhtar Fatmee to bridge the gap between influencers and brands. Read more on our About page!",
+      "We’re a tech-driven team blending web development, data science and AI for creators."
     ],
     privacy: [
       "Your data and content are 100% secure — you control what’s visible to brands.",
@@ -199,15 +312,15 @@ document.addEventListener("DOMContentLoaded", () => {
       "Your information stays private, always."
     ],
     support: [
-      "Our team is here 24/7 for you — chat, call, or email anytime.",
+      "Our team is here for you — chat, call, or email anytime.",
       "Need guidance? We’re always just a message away.",
       "We love helping creators — reach out and we’ll sort it fast!"
     ],
-    followUpPricing: "Since you’re joining, our plans start from free and scale with your growth — no pressure upgrades! 💡",
+    followUpPricing: "Since you’re joining, we’ll suggest the plan that fits your stage — no pressure upgrades! 💡",
     followUpBrand: "After joining, you’ll be visible to brands who can directly contact you — just keep your page updated!",
     default: [
       "Hmm 🤔 I didn’t get that. Try asking about joining, pricing, services, or collaborations!",
-      "Could you rephrase that? I can help with joining, pricing, or brand info!",
+      "Could you rephrase that? I can help with joining, pricing, the AI predictor or brand info!",
       "Not sure I caught that — wanna know about plans, joining, or services?"
     ]
   };
@@ -215,12 +328,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // ===== Topic Detection =====
   const topicMap = {
     hi: "greetings", hello: "greetings", hey: "greetings",
-    join: "join", signup: "join", register: "join", "create profile": "join",
-    "brand deal": "brandDeals", "brand": "brandDeals", "collab": "brandDeals",
-    services: "services", offerings: "services", features: "services",
-    pricing: "pricing", cost: "pricing", plans: "pricing", "how much": "pricing",
-    contact: "contact", phone: "contact", email: "contact", support: "support",
-    portfolio: "portfolio", analytics: "analytics", seo: "seo",
+    join: "join", signup: "join", register: "join", "get started": "join", "create profile": "join",
+    "brand deal": "brandDeals", brand: "brandDeals", collab: "brandDeals",
+    services: "services", service: "services", offerings: "services", features: "services",
+    pricing: "pricing", price: "pricing", cost: "pricing", plans: "pricing", "how much": "pricing",
+    contact: "contact", phone: "contact", email: "contact", whatsapp: "contact", support: "support",
+    portfolio: "portfolio", demo: "portfolio", work: "portfolio",
+    analytics: "analytics", stats: "analytics",
+    ai: "ai", predict: "ai", ml: "ai", model: "ai", views: "ai",
+    seo: "seo", about: "about", founder: "about", who: "about",
     privacy: "privacy"
   };
 
@@ -233,8 +349,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const msg = message.toLowerCase();
     let detectedTopic = "";
 
-    for (let key in topicMap) {
-      if (msg.includes(key)) {
+    for (const key in topicMap) {
+      const pattern = new RegExp(`\\b${key}\\b`);
+      if (pattern.test(msg)) {
         detectedTopic = topicMap[key];
         break;
       }
@@ -252,8 +369,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (detectedTopic) {
       context = detectedTopic;
       lastTopic = detectedTopic;
-      return Array.isArray(responses[detectedTopic]) 
-        ? randomReply(responses[detectedTopic]) 
+      return Array.isArray(responses[detectedTopic])
+        ? randomReply(responses[detectedTopic])
         : responses[detectedTopic];
     } else if (lastTopic) {
       return `Still thinking about ${lastTopic}? You can ask me more details about it!`;
@@ -272,41 +389,28 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ===== Send Message Function =====
-  function sendMessage() {
-    const userMessage = chatInput.value.trim();
+  function sendMessage(text) {
+    const userMessage = (text || chatInput.value).trim();
     if (!userMessage) return;
     addMessage(userMessage, "user");
     chatInput.value = "";
 
     const typingMsg = document.createElement("p");
     typingMsg.classList.add("bot-message", "typing");
-    typingMsg.textContent = "";
     chatOutput.appendChild(typingMsg);
     chatOutput.scrollTop = chatOutput.scrollHeight;
 
     setTimeout(() => {
       typingMsg.remove();
       addMessage(getBotReply(userMessage), "bot");
-    }, 800 + Math.random() * 600);
+    }, 700 + Math.random() * 500);
   }
 
-  sendBtn.addEventListener("click", sendMessage);
-  chatInput.addEventListener("keypress", (e) => {
+  sendBtn.addEventListener("click", () => sendMessage());
+  chatInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") sendMessage();
   });
-});
-
-// for ai powerd recomendations
-document.addEventListener("DOMContentLoaded", function () {
-  const openButton = document.getElementById("openAIButton");
-  const aiSection = document.getElementById("aiAppSection");
-
-  openButton.addEventListener("click", function () {
-    aiSection.style.display = "block";
-    window.scrollTo({
-      top: aiSection.offsetTop,
-      behavior: "smooth",
-  
-    });
+  document.querySelectorAll(".chat-quick button").forEach(btn => {
+    btn.addEventListener("click", () => sendMessage(btn.dataset.q));
   });
-});
+}

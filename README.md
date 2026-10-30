@@ -25,14 +25,32 @@ Enable collaboration between creators
 
 
 
+📄 Pages
+
+index.html – Home: hero, services overview, process, AI predictor preview, demos, testimonials
+
+about.html – Our story, mission & vision, values, founder profile, journey and tech stack
+
+services.html – Detailed services, process, pricing plans and FAQ
+
+work.html – Featured case study and filterable project portfolio
+
+ai-predictor.html – How the Random Forest + XGBoost views predictor works
+
+contact.html – Contact options and collaboration form (Formspree)
+
+
+
 🛠️ Tech Stack
 🎨 Frontend Technologies
 
 HTML – Semantic structure and SEO-friendly markup
 
-CSS – Responsive design, layout, and styling
+CSS – Design tokens, responsive layout, animations (assets/css/style.css)
 
-JavaScript – Interactivity, logic, and dynamic updates
+JavaScript – Mobile nav, scroll reveal, counters, project filters, contact form and chatbot (assets/js/script.js)
+
+Google Fonts (Plus Jakarta Sans) and Font Awesome icons via CDN
 
 
 
@@ -58,9 +76,11 @@ The integrated ML model helps creators estimate video performance before publish
 
 Personalized influencer websites
 
-Clean and responsive frontend UI
+Clean, professional and fully responsive UI
 
 YouTube view prediction using ML
+
+PerplexityBot chatbot on every page
 
 Data-driven insights for growth
 
@@ -80,8 +100,8 @@ SEO and performance optimization
 
 👨‍💻 Author
 
-[Your Name]
-🎓 B.Tech Final Year Student – Integral University
+Shahnawaz Akhtar Fatmee
+🎓 B.Tech Computer Science Engineering – Integral University
 💻 Frontend Developer | 📊 Data & ML Enthusiast
 
 ⭐ Support

@@ -1,80 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — Perplexity.social</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Perplexity.social</title>
+  <meta name="description" content="Contact Perplexity.social for influencer websites, brand collaborations and AI content insights. Call, WhatsApp or send us a message — we reply within 24 hours.">
+  <link rel="icon" href="assets/images/logowala.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- ===== Navigation Bar ===== -->
-  <nav>
-    <div class="logo">
-      <img src="assets/images/logowala.png" alt="Perplexity.social Logo" class="logo-img">
+  <!-- ====== Header ====== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo" aria-label="Perplexity.social home">
+        <img src="assets/images/logowala.png" alt="Perplexity.social">
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav__links" id="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="ai-predictor.html">AI Predictor</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li class="nav__cta-mobile"><a href="contact.html" class="btn btn--primary">Get Started</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <a href="contact.html" class="btn btn--primary">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-    <div class="menu-toggle" id="mobile-menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a href="contact.html" class="btn">Get Started</a>
-  </nav>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero-contact">
-    <div>
-      <h1>Let's Talk About Your Business Goals</h1>
-      <p>We connect influencers and brands to help you grow. Share your vision and let's make it happen!</p>
-      <a href="contact.html" class="btn">Get Started</a>
-    </div>
-  </section>
+  <main>
+    <!-- ====== Page hero ====== -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a> <i class="fa-solid fa-chevron-right"></i> <span>Contact</span></div>
+        <span class="eyebrow">Get in touch</span>
+        <h1>Let’s talk about your <span class="text-gradient">growth goals</span></h1>
+        <p>We connect influencers and brands to help you grow. Share your vision and let’s make it happen — we reply within 24 hours.</p>
+      </div>
+    </section>
 
-  <!-- Contact Section -->
-  <main class="container">
-    <div class="contact-left">
-      <h1>Contact for Collaborations</h1>
-      <p>We’re excited to hear from influencers and brands! Fill out the form below or email us directly at <a href="mailto:hello@perplexity.social">hello@perplexity.social</a></p>
+    <!-- ====== Contact ====== -->
+    <section class="section">
+      <div class="container contact-grid">
+        <div class="info-stack reveal">
+          <a href="tel:+918986923909" class="info-card">
+            <div class="info-card__icon"><i class="fa-solid fa-phone"></i></div>
+            <div><h4>Call us</h4><p>+91 89869 23909</p></div>
+          </a>
+          <a href="https://wa.me/918986923909" target="_blank" rel="noopener" class="info-card">
+            <div class="info-card__icon info-card__icon--wa"><i class="fa-brands fa-whatsapp"></i></div>
+            <div><h4>WhatsApp</h4><p>Chat with us instantly</p></div>
+          </a>
+          <a href="mailto:hello@perplexity.social" class="info-card">
+            <div class="info-card__icon"><i class="fa-solid fa-envelope"></i></div>
+            <div><h4>Email</h4><p>hello@perplexity.social</p></div>
+          </a>
+          <div class="info-card">
+            <div class="info-card__icon"><i class="fa-solid fa-clock"></i></div>
+            <div><h4>Response time</h4><p>Within 24 hours, Monday – Saturday</p></div>
+          </div>
+          <div class="info-visual">
+            <img src="assets/images/contact2-web.jpg" alt="" loading="lazy">
+            <div class="info-visual__overlay">
+              <div><strong>Free consultation</strong><span>No commitment — just a friendly chat about your goals.</span></div>
+            </div>
+          </div>
+        </div>
 
-      <!-- Formspree Form -->
-      <form id="contact-form" class="contact-form" action="https://formspree.io/f/movknraw" method="POST">
-        <input type="text" name="name" id="name" placeholder="Your Name" required>
-        <input type="email" name="_replyto" id="email" placeholder="Your Email" required>
-        <input type="text" name="subject" id="subject" placeholder="Subject" required>
-        <textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
-        <button type="submit" class="contact-btn">Send Message</button>
-      </form>
-    </div>
+        <div class="form-card reveal reveal-delay-1">
+          <h2>Contact for collaborations</h2>
+          <p>We’re excited to hear from influencers and brands! Fill out the form below.</p>
 
-    <div class="contact-right">
-      <img src="assets/images/contact2.jpg" alt="" class="contact-image">
-    </div>
+          <!-- Formspree Form -->
+          <form id="contact-form" action="https://formspree.io/f/movknraw" method="POST">
+            <div class="form-grid">
+              <div class="form-field form-field--full">
+                <label>I am a...</label>
+                <div class="role-picker">
+                  <input type="radio" name="role" id="role-creator" value="Influencer / Creator" checked>
+                  <label for="role-creator"><i class="fa-solid fa-video"></i> Influencer / Creator</label>
+                  <input type="radio" name="role" id="role-brand" value="Brand / Agency">
+                  <label for="role-brand"><i class="fa-solid fa-building"></i> Brand / Agency</label>
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="name">Full name</label>
+                <input type="text" name="name" id="name" placeholder="Your name" required>
+              </div>
+              <div class="form-field">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-field">
+                <label for="handle">Social handle / website</label>
+                <input type="text" name="handle" id="handle" placeholder="@yourhandle">
+              </div>
+              <div class="form-field">
+                <label for="service">Interested in</label>
+                <select name="service" id="service">
+                  <option>Portfolio Website</option>
+                  <option>Social Stats Integration</option>
+                  <option>Brand Collab Tools</option>
+                  <option>AI Content Insights</option>
+                  <option>Brand / Agency Plan</option>
+                  <option>Something else</option>
+                </select>
+              </div>
+              <div class="form-field form-field--full">
+                <label for="subject">Subject</label>
+                <input type="text" name="subject" id="subject" placeholder="What’s this about?" required>
+              </div>
+              <div class="form-field form-field--full">
+                <label for="message">Message</label>
+                <textarea name="message" id="message" placeholder="Tell us about your goals..." rows="6" required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg btn--block" style="margin-top:1.25rem">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+            <div id="form-status" class="form-status" role="status"></div>
+            <p class="form-note"><i class="fa-solid fa-lock"></i> Your details are private and never shared.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Before you reach out</span>
+          <h2>Quick answers</h2>
+        </div>
+        <div class="faq reveal">
+          <details open>
+            <summary>What information should I include?</summary>
+            <p>Your social handles, niche, rough follower count and what you want to achieve — more brand deals, a media kit, better SEO, etc.</p>
+          </details>
+          <details>
+            <summary>Do you work with creators outside India?</summary>
+            <p>Yes! We work remotely and can collaborate with creators and brands anywhere.</p>
+          </details>
+          <details>
+            <summary>Is the consultation really free?</summary>
+            <p>Yes — the first conversation is completely free with no obligation. We’ll recommend the best plan for your stage.</p>
+          </details>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Perplexity.social. All Rights Reserved.</p>
-    <div class="social-icons">
-      <a href="https://www.facebook.com" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/fatmee_akhtar?igsh=NjlhZzJ2NGJ3bDJt" target="_blank">Instagram</a>
-      <a href="https://www.linkedin.com/in/shahnawaz-akhtar-fatmee-a36704211" target="_blank">LinkedIn</a>
+  <!-- ====== Footer ====== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/images/logowala.png" alt="Perplexity.social">
+          <p>Personalized websites, brand collab tools and AI insights that help influencers grow and get paid.</p>
+          <div class="socials">
+            <a href="https://www.instagram.com/fatmee_akhtar?igsh=NjlhZzJ2NGJ3bDJt" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/shahnawaz-akhtar-fatmee-a36704211" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://wa.me/918986923909" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:shahnawzak@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="work.html">Our Work</a></li>
+            <li><a href="ai-predictor.html">AI Predictor</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Portfolio Websites</a></li>
+            <li><a href="services.html">Social Stats Integration</a></li>
+            <li><a href="services.html">Brand Collab Tools</a></li>
+            <li><a href="services.html#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__contact">
+          <h4>Get in touch</h4>
+          <ul>
+            <li><i class="fa-solid fa-phone"></i><a href="tel:+918986923909">+91 89869 23909</a></li>
+            <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/918986923909" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+            <li><i class="fa-solid fa-envelope"></i><a href="mailto:shahnawzak@gmail.com">shahnawzak@gmail.com</a></li>
+            <li><i class="fa-solid fa-location-dot"></i><span>Lucknow, India</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-year>2025</span> Perplexity.social. All rights reserved.</p>
+        <p>Made with <i class="fa-solid fa-heart" style="color:#ff6b76"></i> for creators</p>
+      </div>
     </div>
   </footer>
 
-  <!-- Script for Mobile Menu -->
-  <script>
-    const mobileMenu = document.getElementById('mobile-menu');
-    const navLinks = document.querySelector('.nav-links');
-
-    mobileMenu.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
-    });
-  </script>
+  <script src="assets/js/script.js" defer></script>
 </body>
 </html>

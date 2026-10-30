@@ -3,184 +3,469 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Perplexity.social | Empowering Influencers</title>
-  <meta name="description" content="Perplexity.social helps influencers grow by providing personalized websites, brand collab tools, and seamless social media integration. Connect with brands and expand your influence today.">
+  <title>Perplexity.social | Personalized Websites for Influencers</title>
+  <meta name="description" content="Perplexity.social builds personalized, data-driven websites for influencers — showcase your content, display live social stats, land brand deals and predict YouTube views with AI.">
+  <meta property="og:title" content="Perplexity.social | Empowering Influencers">
+  <meta property="og:description" content="Personalized influencer websites, brand collab tools and an AI-powered YouTube views predictor.">
+  <meta property="og:image" content="assets/images/logowala.png">
+  <link rel="icon" href="assets/images/logowala.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" referrerpolicy="no-referrer">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- ====== Navigation Bar ====== -->
- <nav>
-  <div class="logo">
-    <img src="assets/images/logowala.png" alt="Perplexity.social Logo" class="logo-img">
-  </div>
-  <div class="menu-toggle" id="mobile-menu">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-  <ul class="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="contact.html">Contact</a></li>
-  </ul>
-  <a href="contact.html" class="btn">Get Started</a>
-</nav>
-
-  <!-- ====== Hero Section ====== -->
- <section id="home" class="hero section">
-  <div class="hero-content">
-    <h1>Empowering Influencers to Grow & Collaborate</h1>
-    <p>We design personalized websites that help influencers attract brand deals, showcase their content, and grow faster.</p>
-    <div class="hero-buttons">
-      <a href="contact.html" class="btn-primary">Build Your Site</a>
-      <a href="tel:8986923909" class="btn-secondary">📞 Call Us</a>
-      <a href="https://wa.me/918986923909" target="_blank" class="btn-secondary">💬 WhatsApp</a>
+  <!-- ====== Header ====== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="nav__logo" aria-label="Perplexity.social home">
+        <img src="assets/images/logowala.png" alt="Perplexity.social">
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav__links" id="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="work.html">Work</a></li>
+          <li><a href="ai-predictor.html">AI Predictor</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li class="nav__cta-mobile"><a href="contact.html" class="btn btn--primary">Get Started</a></li>
+        </ul>
+      </nav>
+      <div class="nav__actions">
+        <a href="contact.html" class="btn btn--primary">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        <button class="menu-toggle" id="mobile-menu" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-  </div>
-  <div class="hero-image">
-    <img src="assets/images/8184485.webp" alt="Hero Image">
-  </div>
-</section>
+  </header>
 
-<!-- ====== Demo Section ====== -->
-<section class="demo section">
-  <h2>Explore Our Demos</h2>
-  
-  <div class="demo-content">
-    <!-- Influencer Portfolio Demo -->
-    <div class="demo-box">
-      <img src="assets/images/abid_pic.jpg" alt="Demo Influencer">
-      <h3>@abid vlogger lucknow</h3>
-      <p>Followers: 120K</p>
-      <a href="https://abidvlogger.netlify.app/" target="_blank" class="btn-primary">View Demo</a>
-    </div>
+  <main>
+    <!-- ====== Hero ====== -->
+    <section class="hero" id="home">
+      <div class="container hero__grid">
+        <div class="hero__copy reveal">
+          <span class="eyebrow"><i class="fa-solid fa-bolt"></i> AI-powered creator websites</span>
+          <h1>Turn your influence into a <span class="text-gradient">brand-ready business</span></h1>
+          <p>We design personalized websites that help influencers showcase their content, display real social stats, attract brand deals and grow faster — backed by machine learning insights.</p>
+          <div class="hero__buttons">
+            <a href="contact.html" class="btn btn--primary btn--lg">Build Your Site <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="https://wa.me/918986923909" target="_blank" rel="noopener" class="btn btn--ghost btn--lg"><i class="fa-brands fa-whatsapp"></i> WhatsApp Us</a>
+          </div>
+          <div class="hero__trust">
+            <div class="avatar-stack" aria-hidden="true">
+              <span>A</span><span>V</span><span>R</span><span>+</span>
+            </div>
+            <p><strong>Creators across YouTube &amp; Instagram</strong><br>trust us with their online presence</p>
+          </div>
+        </div>
 
-    <!-- AI Recommendation Demo -->
-    <div class="demo-box">
-      <img src="assets/images/ai_image.png" alt="AI Recommendation">
-      <h3>AI-Powered Recommendation</h3>
-      <p>Discover best engagement with smart AI suggestions ✨</p>
-      <a href="https://ai-powered-video-views-predictor.onrender.com/" target="_blank" class="btn-primary">Try Now</a>
-    </div>
-  </div>
-</section>
+        <div class="hero__visual reveal reveal-delay-2" aria-hidden="true">
+          <div class="mock">
+            <div class="mock__bar">
+              <i></i><i></i><i></i>
+              <div class="mock__url"><i class="fa-solid fa-lock"></i> abidvlogger.netlify.app</div>
+            </div>
+            <div class="mock__body">
+              <div class="mock__cover"></div>
+              <div class="mock__profile">
+                <img class="mock__avatar" src="assets/images/abid_pic.jpg" alt="">
+                <div class="mock__name">
+                  <strong>@abid vlogger lucknow</strong>
+                  <span>Travel &amp; lifestyle creator</span>
+                </div>
+              </div>
+              <div class="mock__stats">
+                <div class="mock__stat"><strong>120K</strong><span>Followers</span></div>
+                <div class="mock__stat"><strong>3</strong><span>New deals</span></div>
+                <div class="mock__stat"><strong>Live</strong><span>Media kit</span></div>
+              </div>
+              <div class="mock__chart">
+                <span style="height:35%;animation-delay:.1s"></span>
+                <span style="height:50%;animation-delay:.15s"></span>
+                <span style="height:42%;animation-delay:.2s"></span>
+                <span style="height:62%;animation-delay:.25s"></span>
+                <span style="height:55%;animation-delay:.3s"></span>
+                <span style="height:74%;animation-delay:.35s"></span>
+                <span style="height:68%;animation-delay:.4s"></span>
+                <span style="height:88%;animation-delay:.45s"></span>
+                <span style="height:80%;animation-delay:.5s"></span>
+                <span style="height:100%;animation-delay:.55s"></span>
+              </div>
+            </div>
+          </div>
+          <div class="float-badge float-badge--1">
+            <div class="ico ico--green"><i class="fa-solid fa-handshake"></i></div>
+            <div><strong>New brand inquiry</strong><span>via your collab form</span></div>
+          </div>
+          <div class="float-badge float-badge--2">
+            <div class="ico ico--brand"><i class="fa-solid fa-chart-line"></i></div>
+            <div><strong>Predicted views</strong><span>AI forecast before publishing</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <!-- ====== Platforms ====== -->
+    <section class="platforms" aria-label="Supported platforms">
+      <div class="container platforms__inner">
+        <span class="platforms__label">Integrates with</span>
+        <div class="platforms__list">
+          <span><i class="fa-brands fa-youtube"></i> YouTube</span>
+          <span><i class="fa-brands fa-instagram"></i> Instagram</span>
+          <span><i class="fa-brands fa-facebook"></i> Facebook</span>
+          <span><i class="fa-brands fa-linkedin"></i> LinkedIn</span>
+          <span><i class="fa-brands fa-x-twitter"></i> X</span>
+        </div>
+      </div>
+    </section>
 
-<script>
-  function openAIModel() {
-    window.open("https://ai-powered-video-views-predictor.onrender.com/", "_blank");
-  }
-</script>
+    <!-- ====== Stats ====== -->
+    <section class="section section--soft">
+      <div class="container">
+        <div class="stats">
+          <div class="stat reveal">
+            <div class="stat__num" data-count="100" data-suffix="%">0%</div>
+            <p>Custom designs — no templates</p>
+          </div>
+          <div class="stat reveal reveal-delay-1">
+            <div class="stat__num" data-count="7">0</div>
+            <p>Days from concept to launch</p>
+          </div>
+          <div class="stat reveal reveal-delay-2">
+            <div class="stat__num" data-count="2">0</div>
+            <p>ML models powering view predictions</p>
+          </div>
+          <div class="stat reveal reveal-delay-3">
+            <div class="stat__num" data-count="24" data-suffix="/7">0</div>
+            <p>Chatbot &amp; WhatsApp support</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script>
-  function openStreamlitApp() {
-    // Replace with your actual Render URL
-    const streamlitURL = "https://ai-powered-video-views-predictor.onrender.com/";
-    window.open(streamlitURL, "_blank"); // opens in a new tab
-  }
-</script>
+    <!-- ====== Services ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">What we do</span>
+          <h2>Everything a creator needs to <span class="text-gradient">look professional</span></h2>
+          <p>From your personal website to brand-collab tools and AI insights — one platform built around how influencers actually work.</p>
+        </div>
 
-  <!-- ====== Services Section ====== -->
-<section class="services section">
-  <h2>Our Core Services</h2>
-  <div class="service-cards">
-    <div class="card">
-      <h3>Portfolio Website</h3>
-      <p>Custom-designed websites that reflect your unique brand identity.</p>
-    </div>
-    <div class="card">
-      <h3>Social Stats Integration</h3>
-      <p>Automatically update your social metrics to impress brands.</p>
-    </div>
-    <div class="card">
-      <h3>Brand Collab Tools</h3>
-      <p>Smart features that connect influencers with businesses easily.</p>
-    </div>
-  </div>
-</section>
+        <div class="grid-3">
+          <article class="card reveal">
+            <div class="card__icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <h3>Portfolio Websites</h3>
+            <p>Custom-designed, mobile-first websites that reflect your unique brand identity and showcase your best content.</p>
+            <a href="services.html" class="link-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+          <article class="card reveal reveal-delay-1">
+            <div class="card__icon"><i class="fa-solid fa-chart-simple"></i></div>
+            <h3>Social Stats Integration</h3>
+            <p>Display follower growth, engagement and performance metrics automatically — numbers brands trust.</p>
+            <a href="services.html" class="link-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+          <article class="card reveal reveal-delay-2">
+            <div class="card__icon"><i class="fa-solid fa-handshake-angle"></i></div>
+            <h3>Brand Collab Tools</h3>
+            <p>Media kits, rate cards and inquiry forms that connect you with businesses in a single click.</p>
+            <a href="services.html" class="link-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>AI Views Predictor</h3>
+            <p>Estimate how a YouTube video will perform before you publish, using Random Forest + XGBoost.</p>
+            <a href="ai-predictor.html" class="link-arrow">Try it <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+          <article class="card reveal reveal-delay-1">
+            <div class="card__icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+            <h3>SEO &amp; Discoverability</h3>
+            <p>Search-optimized pages so brands and fans find you on Google — not just inside the apps.</p>
+            <a href="services.html" class="link-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+          <article class="card reveal reveal-delay-2">
+            <div class="card__icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <h3>Personal Branding</h3>
+            <p>Logo, colors, bio and content strategy guidance that make your profile memorable and consistent.</p>
+            <a href="services.html" class="link-arrow">Learn more <i class="fa-solid fa-arrow-right"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
 
-  <!-- ====== How It Works ====== -->
-<section class="how-it-works section">
-  <h2>How It Works</h2>
-  <div class="steps">
-    <div class="step">1️⃣ Share Profiles</div>
-    <div class="step">2️⃣ We Design</div>
-    <div class="step">3️⃣ Start Getting Deals</div>
-  </div>
-</section>
+    <!-- ====== Why choose us ====== -->
+    <section class="section section--soft">
+      <div class="container split">
+        <div class="split__media reveal">
+          <img src="assets/images/gettyimages-1189435042-612x612.jpg" alt="Creator presenting growth analytics on camera" loading="lazy">
+        </div>
+        <div class="split__copy reveal reveal-delay-1">
+          <span class="eyebrow">Why Perplexity.social</span>
+          <h2>Built for creators who are ready to <span class="text-gradient">get serious</span></h2>
+          <p>Social profiles get you followers. A professional website gets you deals. We bridge that gap with design, data and technology.</p>
 
-  <!-- ====== Testimonials ====== -->
-<section class="testimonials section">
-  <h2>What Influencers Say</h2>
-  <blockquote>“Perplexity.social helped me land 3 new brand deals in the first week!” – @abid vlogger lucknow</blockquote>
-  <blockquote>“Super smooth experience and stunning website design.” – @viralvlog rounderz</blockquote>
-</section>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-pen-ruler"></i></div>
+            <div><h4>100% custom designs</h4><p>Built uniquely for your influencer identity — never a cookie-cutter template.</p></div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-chart-pie"></i></div>
+            <div><h4>Data-driven insights</h4><p>Meaningful analytics and ML predictions for smarter content and collaborations.</p></div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+            <div><h4>SEO &amp; mobile optimized</h4><p>Rank better and look great on every device brands use.</p></div>
+          </div>
+          <div class="feature-row">
+            <div class="feature-row__icon"><i class="fa-solid fa-rocket"></i></div>
+            <div><h4>Fast turnaround</h4><p>From concept to launch within days, not weeks.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ====== Final CTA ====== -->
-<section class="cta section">
-  <h2>Ready to Elevate Your Influence?</h2>
-  <p>Let’s build your professional influencer website today.</p>
-  <a href="contact.html" class="btn-primary">Book a Demo</a>
-</section>
+    <!-- ====== How it works ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">How it works</span>
+          <h2>Live in four simple steps</h2>
+          <p>No tech skills needed. You focus on creating — we handle the rest.</p>
+        </div>
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step__num"><i class="fa-solid fa-share-nodes"></i></div>
+            <h3>Share your profiles</h3>
+            <p>Send us your social handles, niche and goals through a quick form.</p>
+          </div>
+          <div class="step reveal reveal-delay-1">
+            <div class="step__num"><i class="fa-solid fa-palette"></i></div>
+            <h3>We design</h3>
+            <p>We craft a personalized site with your content, stats and brand style.</p>
+          </div>
+          <div class="step reveal reveal-delay-2">
+            <div class="step__num"><i class="fa-solid fa-rocket"></i></div>
+            <h3>Launch &amp; optimize</h3>
+            <p>Your site goes live with SEO, analytics and a collab form built in.</p>
+          </div>
+          <div class="step reveal reveal-delay-3">
+            <div class="step__num"><i class="fa-solid fa-sack-dollar"></i></div>
+            <h3>Start getting deals</h3>
+            <p>Brands discover you, see your numbers and reach out directly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ====== About Us Section (Moved Above Footer) ====== -->
-<section class="about section" id="about">
-  <h2>About Us</h2>
-  <p>
-    At <strong>Perplexity.social</strong>, we are redefining influencer-brand collaborations. 
-    Our platform is more than a website—it's a comprehensive tool to simplify outreach, streamline partnerships, and maximize growth opportunities for creators and businesses. 
-    Whether you're seeking brand collaborations or searching for the right digital ambassadors, we provide a seamless solution.
-  </p>
-  <p>
-    Featuring intuitive design, personalized recommendations, and cutting-edge integration, we make every collaboration impactful. 
-    Our mission is to empower influencers and businesses to focus on creativity while we manage connections.
-  </p>
-  
-  <div class="founder">
-    <h3>Meet the Founder</h3>
-    <p>
-      <strong>Shahnawaz Akhtar Fatmee</strong>, founder of Perplexity.social, is a final-year Computer Science Engineering student and aspiring tech entrepreneur. With expertise in Web Development, Data Science, AI, and Digital Marketing, and research on Emotional Classification using the BERT model, he aims to bridge the gap between influencers and brands through innovative, technology-driven solutions.
-  </div>
+    <!-- ====== AI Predictor ====== -->
+    <section class="section section--dark">
+      <div class="container split">
+        <div class="split__copy reveal">
+          <span class="eyebrow"><i class="fa-solid fa-microchip"></i> Machine learning</span>
+          <h2>Know how your video will perform — <span class="text-gradient">before you post</span></h2>
+          <p>Our AI-powered predictor uses an ensemble of Random Forest and XGBoost trained on historical YouTube data to estimate views, so you can plan titles, timing and topics with confidence.</p>
+          <ul class="check-list" style="margin-bottom:2rem">
+            <li>Ensemble learning for more stable predictions</li>
+            <li>Test ideas before investing hours in production</li>
+            <li>Free to try — no sign-up required</li>
+          </ul>
+          <div class="hero__buttons" style="margin-bottom:0">
+            <a href="https://ai-powered-video-views-predictor.onrender.com/" target="_blank" rel="noopener" class="btn btn--primary">Try the Predictor <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            <a href="ai-predictor.html" class="btn btn--outline-light">How it works</a>
+          </div>
+        </div>
 
-  <div class="contact-buttons">
-    <a href="https://wa.me/918986923909" target="_blank" class="btn-whatsapp">Chat on WhatsApp</a>
-    <a href="tel:+918986923909" class="btn-call">Call Us</a>
-  </div>
-</section>
+        <div class="reveal reveal-delay-2" data-animate>
+          <div class="predictor-card" aria-hidden="true">
+            <div class="predictor-card__head">
+              <strong><i class="fa-brands fa-youtube" style="color:#ff4d4d"></i> &nbsp;Views Predictor</strong>
+              <span class="live-dot">Model ready</span>
+            </div>
+            <div class="predictor-field"><span>Video category</span><strong>Travel Vlog</strong></div>
+            <div class="predictor-field"><span>Duration</span><strong>12 min</strong></div>
+            <div class="predictor-field"><span>Publish time</span><strong>Sat, 6:00 PM</strong></div>
+            <div class="predictor-field"><span>Subscribers</span><strong>120K</strong></div>
+            <div class="meter">
+              <div class="meter__row"><span>Random Forest</span><span>Model 1</span></div>
+              <div class="meter__track"><div class="meter__fill" style="--w:78%"></div></div>
+              <div class="meter__row"><span>XGBoost</span><span>Model 2</span></div>
+              <div class="meter__track"><div class="meter__fill" style="--w:86%"></div></div>
+            </div>
+            <div class="predictor-result">
+              <div><small>Ensemble estimate (example)</small><strong>48.2K views</strong></div>
+              <i class="fa-solid fa-arrow-trend-up"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Demos ====== -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Live demos</span>
+          <h2>See it in action</h2>
+          <p>Explore a real influencer website we built and try our AI tool yourself.</p>
+        </div>
+        <div class="grid-2">
+          <article class="work-card reveal">
+            <div class="work-card__media">
+              <img src="assets/images/abid_pic.jpg" alt="Abid Vlogger Lucknow portfolio" style="object-position:top" loading="lazy">
+              <span class="work-card__tag"><i class="fa-solid fa-circle-check"></i> Live client site</span>
+            </div>
+            <div class="work-card__body">
+              <h3>@abid vlogger lucknow</h3>
+              <p>A personal portfolio for a 120K-follower travel &amp; lifestyle creator — content showcase, stats and a brand collab section.</p>
+              <div class="work-card__meta">
+                <span class="chip"><i class="fa-solid fa-users"></i> 120K followers</span>
+                <span class="chip"><i class="fa-solid fa-mobile"></i> Mobile-first</span>
+              </div>
+              <a href="https://abidvlogger.netlify.app/" target="_blank" rel="noopener" class="btn btn--primary">View Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+          <article class="work-card reveal reveal-delay-1">
+            <div class="work-card__media work-card__media--contain">
+              <img src="assets/images/ai_image.png" alt="AI-powered recommendation system" loading="lazy">
+              <span class="work-card__tag"><i class="fa-solid fa-robot"></i> AI tool</span>
+            </div>
+            <div class="work-card__body">
+              <h3>AI-Powered Views Predictor</h3>
+              <p>Discover the best engagement with smart AI suggestions. Enter video details and get a predicted view count instantly. ✨</p>
+              <div class="work-card__meta">
+                <span class="chip"><i class="fa-solid fa-tree"></i> Random Forest</span>
+                <span class="chip"><i class="fa-solid fa-bolt"></i> XGBoost</span>
+              </div>
+              <a href="https://ai-powered-video-views-predictor.onrender.com/" target="_blank" rel="noopener" class="btn btn--primary">Try Now <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </article>
+        </div>
+        <p style="text-align:center;margin-top:2.5rem">
+          <a href="work.html" class="link-arrow">See all our work <i class="fa-solid fa-arrow-right"></i></a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====== Testimonials ====== -->
+    <section class="section section--soft">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">Testimonials</span>
+          <h2>What influencers say</h2>
+        </div>
+        <div class="grid-3">
+          <figure class="testimonial reveal">
+            <div class="testimonial__stars">★★★★★</div>
+            <blockquote>“Perplexity.social helped me land 3 new brand deals in the first week!”</blockquote>
+            <figcaption class="testimonial__author">
+              <img src="assets/images/abid_pic.jpg" alt="">
+              <div><strong>@abid vlogger lucknow</strong><span>Travel &amp; lifestyle creator</span></div>
+            </figcaption>
+          </figure>
+          <figure class="testimonial reveal reveal-delay-1">
+            <div class="testimonial__stars">★★★★★</div>
+            <blockquote>“Super smooth experience and stunning website design.”</blockquote>
+            <figcaption class="testimonial__author">
+              <span class="initial">V</span>
+              <div><strong>@viralvlog rounderz</strong><span>YouTube creator</span></div>
+            </figcaption>
+          </figure>
+          <figure class="testimonial reveal reveal-delay-2" style="background:var(--ink);border-color:var(--ink)">
+            <div class="testimonial__stars"><i class="fa-solid fa-quote-left" style="color:#ff6b76;font-size:1.5rem"></i></div>
+            <blockquote style="color:#fff">Your success story could be next. Let’s build a website that works as hard as you do.</blockquote>
+            <div class="testimonial__author" style="border-color:var(--ink-3)">
+              <a href="contact.html" class="btn btn--primary">Start your project <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== About teaser ====== -->
+    <section class="section">
+      <div class="container split split--reverse">
+        <div class="split__media reveal">
+          <img src="assets/images/hero.jpg.jpg" alt="Digital handshake representing brand partnerships" loading="lazy">
+        </div>
+        <div class="split__copy reveal reveal-delay-1">
+          <span class="eyebrow">About us</span>
+          <h2>Redefining influencer–brand collaborations</h2>
+          <p>Perplexity.social is more than a website builder — it’s a toolkit that simplifies outreach, streamlines partnerships and maximizes growth for creators and businesses. We manage the connections so you can focus on creativity.</p>
+          <a href="about.html" class="btn btn--ghost">Our story <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CTA ====== -->
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="cta-band reveal">
+          <div>
+            <h2>Ready to elevate your influence?</h2>
+            <p>Let’s build your professional influencer website today. Free consultation, no commitment.</p>
+          </div>
+          <div class="cta-band__actions">
+            <a href="contact.html" class="btn btn--light btn--lg">Book a Demo</a>
+            <a href="tel:+918986923909" class="btn btn--outline-light btn--lg"><i class="fa-solid fa-phone"></i> Call Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- ====== Footer ====== -->
-<footer>
-  <p>© 2025 Perplexity.social. All Rights Reserved.</p>
-  <div class="social-icons">
-    <a href= "mailto:shahnawzak@gmail.com">E-mail</a>
-    <a href="https://www.instagram.com/fatmee_akhtar?igsh=NjlhZzJ2NGJ3bDJt" target="_blank">Instagram</a>
-    <a href="https://www.linkedin.com/in/shahnawaz-akhtar-fatmee-a36704211?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
- target="_blank">LinkedIn</a>
-  </div>
-<!-- ====== Chatbot Widget ====== -->
-<div id="chatbot-container">
-  <div id="chatbot-icon">
-    <span class="chatbot-icon-emoji">💬</span>
-    <span class="chatbot-icon-text">Chat with PerplexityBot</span>
-  </div>
-
-  <div id="chatbot-body" class="hidden">
-    <div id="chatbot-header">
-      <span class="chatbot-title">PerplexityBot</span>
-      <span id="chatbot-close">✖</span>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <img src="assets/images/logowala.png" alt="Perplexity.social">
+          <p>Personalized websites, brand collab tools and AI insights that help influencers grow and get paid.</p>
+          <div class="socials">
+            <a href="https://www.instagram.com/fatmee_akhtar?igsh=NjlhZzJ2NGJ3bDJt" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/shahnawaz-akhtar-fatmee-a36704211" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://wa.me/918986923909" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:shahnawzak@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="work.html">Our Work</a></li>
+            <li><a href="ai-predictor.html">AI Predictor</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Portfolio Websites</a></li>
+            <li><a href="services.html">Social Stats Integration</a></li>
+            <li><a href="services.html">Brand Collab Tools</a></li>
+            <li><a href="services.html#pricing">Pricing</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__contact">
+          <h4>Get in touch</h4>
+          <ul>
+            <li><i class="fa-solid fa-phone"></i><a href="tel:+918986923909">+91 89869 23909</a></li>
+            <li><i class="fa-brands fa-whatsapp"></i><a href="https://wa.me/918986923909" target="_blank" rel="noopener">Chat on WhatsApp</a></li>
+            <li><i class="fa-solid fa-envelope"></i><a href="mailto:shahnawzak@gmail.com">shahnawzak@gmail.com</a></li>
+            <li><i class="fa-solid fa-location-dot"></i><span>Lucknow, India</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-year>2025</span> Perplexity.social. All rights reserved.</p>
+        <p>Made with <i class="fa-solid fa-heart" style="color:#ff6b76"></i> for creators</p>
+      </div>
     </div>
+  </footer>
 
-    <div id="chat-output"></div>
-
-    <div id="chat-input-area">
-      <input type="text" id="chat-input" placeholder="Type your message..." />
-      <button id="send-btn">Send</button>
-    </div>
-  </div>
-</div>
-<script src="assets/js/script.js" defer></script>
-
+  <script src="assets/js/script.js" defer></script>
 </body>
 </html>
