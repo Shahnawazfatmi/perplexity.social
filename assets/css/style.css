@@ -280,11 +280,21 @@ h1, h2, h3, h4 {
   top: 0;
   z-index: 1000;
   height: var(--header-h);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Blur lives on a pseudo-element: backdrop-filter on the header itself would
+   make it the containing block for the fixed mobile drawer, which then widens
+   the page by the drawer's off-screen width. */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: saturate(180%) blur(14px);
   -webkit-backdrop-filter: saturate(180%) blur(14px);
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .site-header.scrolled {
@@ -2671,13 +2681,21 @@ a.info-card:hover {
     padding: calc(var(--header-h) + 1rem) 1.25rem 2rem;
     box-shadow: var(--shadow-lg);
     transform: translateX(100%);
-    transition: transform 0.4s var(--ease);
+    visibility: hidden;
+    transition: transform 0.4s var(--ease), visibility 0s linear 0.4s;
     z-index: 1001;
     overflow-y: auto;
   }
 
   .nav__links.active {
     transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.4s var(--ease);
+  }
+
+  body.nav-open .to-top,
+  body.nav-open #chatbot-container {
+    display: none;
   }
 
   .nav__links a {

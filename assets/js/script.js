@@ -30,15 +30,18 @@ function initMobileMenu() {
   const navLinks = document.querySelector(".nav__links");
   if (!mobileMenu || !navLinks) return;
 
+  // Inside the header so the dimmed overlay also covers the header bar
+  // while staying below the drawer and toggle.
   const overlay = document.createElement("div");
   overlay.className = "nav-overlay";
-  document.body.appendChild(overlay);
+  document.querySelector(".site-header").appendChild(overlay);
 
   const setOpen = (open) => {
     navLinks.classList.toggle("active", open);
     mobileMenu.classList.toggle("open", open);
     overlay.classList.toggle("show", open);
     mobileMenu.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("nav-open", open);
     document.body.style.overflow = open ? "hidden" : "";
   };
 
